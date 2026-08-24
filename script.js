@@ -67,9 +67,47 @@ transactionForm.addEventListener("submit", function(event) {
 
     transactions.push(transaction);
 
-    console.log(transactions);
+    renderTransactions();
 
     transactionForm.reset();
 
     dateInput.value = new Date().toISOString().split("T")[0];
 });
+
+// DISPLAY TRANSACTIONS
+
+function renderTransactions() {
+    transactionList.innerHTML = "";
+
+    if (transactions.length === 0) {
+        transactionList.innerHTML = `
+            <div class="empty-state">
+                <h3>No transactions yet</h3>
+                <p>Your transactions will appear here.</p>
+            </div>
+        `;
+        return;
+    }
+
+    transactions.slice().reverse().forEach(function(transaction) {
+        const item = document.createElement("div");
+
+        item.className = `transaction-item ${transaction.type}`;
+
+        const sign = transaction.type === "income" ? "+" : "-";
+
+        item.innerHTML = `
+            <div>
+                <h3>${transaction.title}</h3>
+                <p>${transaction.category} • ${transaction.date}</p>
+            </div>
+
+            <div class="transaction-right">
+                <strong>${sign} ₹${transaction.amount}</strong>
+                <button class="delete-btn">Delete</button>
+            </div>
+        `;
+
+        transactionList.appendChild(item);
+    });
+}

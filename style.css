@@ -395,3 +395,43 @@ button {
         font-size: 26px;
     }
 }
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.transaction-item p {
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.transaction-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.income .transaction-right strong {
+    color: #16a34a;
+}
+
+.expense .transaction-right strong {
+    color: #dc2626;
+}
+
+.delete-btn {
+    border: none;
+    background: transparent;
+    color: #dc2626;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.delete-btn:hover {
+    text-decoration: underline;
+}
