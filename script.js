@@ -14,3 +14,14 @@ currentDateElement.textContent = today.toLocaleDateString("en-IN", {
 });
 
 console.log("FinanceFlow application initialized");
+
+// TRANSACTION FORM
+
+const transactionForm = document.getElementById("transactionForm");
+const titleInput = document.getElementById("title");
+const typeInput = document.getElementById("type");
+const categoryInput = document.getElementById("category");
+const amountInput = document.getElementById("amount");
+const dateInput = document.getElementById("date");
+
+dateInput.value = new Date().toISOString().split("T")[0];
