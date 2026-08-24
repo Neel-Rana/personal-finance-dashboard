@@ -78,9 +78,17 @@ transactionForm.addEventListener("submit", function (event) {
 // DISPLAY TRANSACTIONS
 
 function renderTransactions() {
+    const searchText = searchInput.value.toLowerCase();
+
+    const filteredTransactions = transactions.filter(function(transaction) {
+        return transaction.title
+            .toLowerCase()
+            .includes(searchText);
+    });
+
     transactionList.innerHTML = "";
 
-    if (transactions.length === 0) {
+    if (filteredTransactions.length === 0) {
         transactionList.innerHTML = `
             <div class="empty-state">
                 <h3>No transactions yet</h3>
@@ -90,7 +98,7 @@ function renderTransactions() {
         return;
     }
 
-    transactions.slice().reverse().forEach(function (transaction) {
+    filteredTransactions.slice().reverse().forEach(function (transaction) {
         const item = document.createElement("div");
 
         item.className = `transaction-item ${transaction.type}`;
@@ -135,6 +143,11 @@ function updateSummary() {
     incomeElement.textContent = `₹${totalIncome}`;
     expenseElement.textContent = `₹${totalExpense}`;
 }
+// SEARCH TRANSACTIONS
+
+searchInput.addEventListener("input", function() {
+    renderTransactions();
+});
 
 // DELETE TRANSACTION
 
