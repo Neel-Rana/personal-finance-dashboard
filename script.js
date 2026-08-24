@@ -25,3 +25,9 @@ const amountInput = document.getElementById("amount");
 const dateInput = document.getElementById("date");
 
 dateInput.value = new Date().toISOString().split("T")[0];
+
+// HISTORY ELEMENTS
+
+const transactionList = document.getElementById("transactionList");
+const searchInput = document.getElementById("searchInput");
+const filterType = document.getElementById("filterType");
