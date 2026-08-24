@@ -35,29 +35,48 @@
         </nav>
 
 
+
+
         <main class="dashboard">
 
-            <main class="dashboard">
+            <section class="welcome-section">
 
-                <section class="welcome-section">
+                <div class="welcome-content">
+                    <p class="greeting">Personal Finance Dashboard</p>
+                    <h1>Manage your money smarter.</h1>
+                    <p class="subtitle">
+                        Track your income, expenses and financial activity in one place.
+                    </p>
+                </div>
 
-                    <div class="welcome-content">
-                        <p class="greeting">Personal Finance Dashboard</p>
-                        <h1>Manage your money smarter.</h1>
-                        <p class="subtitle">
-                            Track your income, expenses and financial activity in one place.
-                        </p>
-                    </div>
+                <div class="date-box">
+                    <span>Today</span>
+                    <strong id="currentDate">Loading...</strong>
+                </div>
 
-                    <div class="date-box">
-                        <span>Today</span>
-                        <strong id="currentDate">Loading...</strong>
-                    </div>
+            </section>
 
-                </section>
+            <section class="summary-grid">
 
-            </main>
+                <div class="summary-card balance-card">
+                    <p>Total Balance</p>
+                    <h2 id="balance">₹0.00</h2>
+                </div>
+
+                <div class="summary-card income-card">
+                    <p>Total Income</p>
+                    <h2 id="income">₹0.00</h2>
+                </div>
+
+                <div class="summary-card expense-card">
+                    <p>Total Expenses</p>
+                    <h2 id="expense">₹0.00</h2>
+                </div>
+
+            </section>
+
         </main>
+
 
     </div>
 

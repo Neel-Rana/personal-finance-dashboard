@@ -168,3 +168,38 @@ button {
 .date-box strong {
     font-size: 15px;
 }
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+}
+
+.summary-card p {
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.summary-card h2 {
+    font-size: 30px;
+}
+
+.income-card h2 {
+    color: #16a34a;
+}
+
+.expense-card h2 {
+    color: #dc2626;
+}
