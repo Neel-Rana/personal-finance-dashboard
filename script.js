@@ -30,8 +30,18 @@ const expenseElement = document.getElementById("expense");
 
 // TRANSACTION DATA
 
-let transactions = [];
 
+let transactions =
+    JSON.parse(localStorage.getItem("transactions")) || [];
+
+// SAVE TRANSACTIONS
+
+function saveTransactions() {
+    localStorage.setItem(
+        "transactions",
+        JSON.stringify(transactions)
+    );
+}
 
 // CURRENT DATE
 
@@ -66,7 +76,7 @@ transactionForm.addEventListener("submit", function (event) {
     };
 
     transactions.push(transaction);
-
+    saveTransactions();
     renderTransactions();
     updateSummary();
 
@@ -171,7 +181,7 @@ transactionList.addEventListener("click", function(event) {
         transactions = transactions.filter(function(transaction) {
             return transaction.id !== id;
         });
-
+        saveTransactions();
         renderTransactions();
         updateSummary();
     }
