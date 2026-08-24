@@ -79,11 +79,18 @@ transactionForm.addEventListener("submit", function (event) {
 
 function renderTransactions() {
     const searchText = searchInput.value.toLowerCase();
+    const selectedType = filterType.value;
 
     const filteredTransactions = transactions.filter(function(transaction) {
-        return transaction.title
+        const matchesSearch = transaction.title
             .toLowerCase()
             .includes(searchText);
+
+        const matchesType =
+            selectedType === "all" ||
+            transaction.type === selectedType;
+
+        return matchesSearch && matchesType;
     });
 
     transactionList.innerHTML = "";
@@ -146,6 +153,11 @@ function updateSummary() {
 // SEARCH TRANSACTIONS
 
 searchInput.addEventListener("input", function() {
+    renderTransactions();
+});
+// FILTER TRANSACTIONS
+
+filterType.addEventListener("change", function() {
     renderTransactions();
 });
 
