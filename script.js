@@ -85,6 +85,16 @@ transactionForm.addEventListener("submit", function (event) {
     dateInput.value = new Date().toISOString().split("T")[0];
 });
 
+// FORMAT CURRENCY
+
+function formatCurrency(amount) {
+    return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 2
+    }).format(amount);
+}
+
 // DISPLAY TRANSACTIONS
 
 function renderTransactions() {
@@ -129,7 +139,7 @@ function renderTransactions() {
             </div>
 
             <div class="transaction-right">
-                <strong>${sign} ₹${transaction.amount}</strong>
+                <strong>${sign}${formatCurrency(transaction.amount)}</strong>
                 <button class="delete-btn" data-id="${transaction.id}">
                     Delete
                 </button>
@@ -156,9 +166,9 @@ function updateSummary() {
 
     const balance = totalIncome - totalExpense;
 
-    balanceElement.textContent = `₹${balance}`;
-    incomeElement.textContent = `₹${totalIncome}`;
-    expenseElement.textContent = `₹${totalExpense}`;
+    balanceElement.textContent = formatCurrency(balance);
+    incomeElement.textContent = formatCurrency(totalIncome);
+    expenseElement.textContent = formatCurrency(totalExpense);
 }
 // SEARCH TRANSACTIONS
 
