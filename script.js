@@ -68,6 +68,7 @@ transactionForm.addEventListener("submit", function(event) {
     transactions.push(transaction);
 
     renderTransactions();
+    updateSummary();
 
     transactionForm.reset();
 
@@ -111,3 +112,27 @@ function renderTransactions() {
         transactionList.appendChild(item);
     });
 }
+
+// UPDATE SUMMARY
+
+function updateSummary() {
+    let totalIncome = 0;
+    let totalExpense = 0;
+
+    transactions.forEach(function(transaction) {
+        if (transaction.type === "income") {
+            totalIncome += transaction.amount;
+        } else {
+            totalExpense += transaction.amount;
+        }
+    });
+
+    const balance = totalIncome - totalExpense;
+
+    balanceElement.textContent = `₹${balance}`;
+    incomeElement.textContent = `₹${totalIncome}`;
+    expenseElement.textContent = `₹${totalExpense}`;
+}
+
+renderTransactions();
+updateSummary();
