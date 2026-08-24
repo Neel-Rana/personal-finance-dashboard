@@ -1,7 +1,16 @@
-// FinanceFlow - Personal Finance Dashboard
-
-console.log("FinanceFlow application initialized");
+// NAVIGATION ELEMENTS
 
 const themeToggle = document.getElementById("themeToggle");
+const currentDateElement = document.getElementById("currentDate");
 
-console.log("Theme toggle ready");
+// DISPLAY CURRENT DATE
+
+const today = new Date();
+
+currentDateElement.textContent = today.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+});
+
+console.log("FinanceFlow application initialized");
