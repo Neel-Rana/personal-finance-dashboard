@@ -66,12 +66,20 @@ dateInput.value = new Date().toISOString().split("T")[0];
 transactionForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
+    const title = titleInput.value.trim();
+    const amount = Number(amountInput.value);
+
+    if (title === "" || amount <= 0) {
+        alert("Please enter a valid transaction title and amount.");
+        return;
+    }
+
     const transaction = {
         id: Date.now(),
-        title: titleInput.value.trim(),
+        title: title,
         type: typeInput.value,
         category: categoryInput.value,
-        amount: Number(amountInput.value),
+        amount: amount,
         date: dateInput.value
     };
 
