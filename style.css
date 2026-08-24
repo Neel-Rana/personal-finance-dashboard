@@ -435,3 +435,11 @@ button {
 .delete-btn:hover {
     text-decoration: underline;
 }
+
+body.dark-mode {
+    --background: #111827;
+    --surface: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --border: #374151;
+}

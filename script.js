@@ -197,5 +197,12 @@ transactionList.addEventListener("click", function(event) {
     }
 });
 
+// DARK MODE
+
+themeToggle.addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+});
+
+
 renderTransactions();
 updateSummary();
