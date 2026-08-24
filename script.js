@@ -53,7 +53,7 @@ dateInput.value = new Date().toISOString().split("T")[0];
 
 // ADD TRANSACTION
 
-transactionForm.addEventListener("submit", function(event) {
+transactionForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const transaction = {
@@ -90,7 +90,7 @@ function renderTransactions() {
         return;
     }
 
-    transactions.slice().reverse().forEach(function(transaction) {
+    transactions.slice().reverse().forEach(function (transaction) {
         const item = document.createElement("div");
 
         item.className = `transaction-item ${transaction.type}`;
@@ -105,7 +105,9 @@ function renderTransactions() {
 
             <div class="transaction-right">
                 <strong>${sign} ₹${transaction.amount}</strong>
-                <button class="delete-btn">Delete</button>
+                <button class="delete-btn" data-id="${transaction.id}">
+                    Delete
+                </button>
             </div>
         `;
 
@@ -119,7 +121,7 @@ function updateSummary() {
     let totalIncome = 0;
     let totalExpense = 0;
 
-    transactions.forEach(function(transaction) {
+    transactions.forEach(function (transaction) {
         if (transaction.type === "income") {
             totalIncome += transaction.amount;
         } else {
@@ -133,6 +135,22 @@ function updateSummary() {
     incomeElement.textContent = `₹${totalIncome}`;
     expenseElement.textContent = `₹${totalExpense}`;
 }
+
+// DELETE TRANSACTION
+
+transactionList.addEventListener("click", function(event) {
+    if (event.target.classList.contains("delete-btn")) {
+
+        const id = Number(event.target.dataset.id);
+
+        transactions = transactions.filter(function(transaction) {
+            return transaction.id !== id;
+        });
+
+        renderTransactions();
+        updateSummary();
+    }
+});
 
 renderTransactions();
 updateSummary();
