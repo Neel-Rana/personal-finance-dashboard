@@ -49,15 +49,27 @@ currentDateElement.textContent = today.toLocaleDateString("en-IN", {
 dateInput.value = new Date().toISOString().split("T")[0];
 
 
-// TRANSACTION EXAMPLE
 
-const transactionExample = {
-    id: Date.now(),
-    title: "Salary",
-    type: "income",
-    category: "Salary",
-    amount: 50000,
-    date: dateInput.value
-};
 
-console.log(transactionExample);
+// ADD TRANSACTION
+
+transactionForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const transaction = {
+        id: Date.now(),
+        title: titleInput.value.trim(),
+        type: typeInput.value,
+        category: categoryInput.value,
+        amount: Number(amountInput.value),
+        date: dateInput.value
+    };
+
+    transactions.push(transaction);
+
+    console.log(transactions);
+
+    transactionForm.reset();
+
+    dateInput.value = new Date().toISOString().split("T")[0];
+});
